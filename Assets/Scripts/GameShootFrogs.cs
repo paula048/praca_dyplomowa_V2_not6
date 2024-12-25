@@ -99,8 +99,9 @@ public class GameShootFrogs : MonoBehaviour
     private Vector3 randPosition()
     {
         var resultX = min_max(coord1.position.x, coord2.position.x);
+        var resultY = min_max(coord1.position.y, coord2.position.y);
         var resultZ = min_max(coord1.position.z, coord2.position.z);
-        return new Vector3(Random.Range(resultX.min, resultX.max), -0.37f, Random.Range(resultZ.min, resultX.max));
+        return new Vector3(Random.Range(resultX.min, resultX.max), Random.Range(resultY.min, resultY.max), Random.Range(resultZ.min, resultX.max));
     }
 
     private float randRotation()
