@@ -8,8 +8,11 @@ public class GameShootFrogs : MonoBehaviour
     public GameObject frogModel;
     public int numberOfFrog = 20;
     public List<Material> frogColors;
-    public Transform coord1;
-    public Transform coord2;
+    public List<GameObject> places;
+    public List<PlacePosition> CoordsPositions;
+    private Transform coord1;
+    private Transform coord2;
+
 
     private int aliveFrogs;
 
@@ -23,6 +26,7 @@ public class GameShootFrogs : MonoBehaviour
         if(coord1 != null){
             Debug.Log("TEST COORDS: " + coord1.position.x);
         }
+
         
     }
 
@@ -31,6 +35,30 @@ public class GameShootFrogs : MonoBehaviour
         
     }
 
+
+
+    private void extractCoordsFromPlaces(){
+        // if exist             --- warunek
+
+
+        foreach(GameObject place in places){
+            Transform pos1 = place.transform.Find("Coord 1"); 
+            Transform pos2 = place.transform.Find("Coord 2"); 
+
+            // Check if both transforms are found 
+            if (pos1 != null && pos2 != null) 
+            { 
+                CoordsPositions.Add(new PlacePosition(pos1, pos2));
+            } 
+            else 
+            { 
+                Debug.LogError("One or both positions could not be found."); 
+            }
+
+        }
+
+
+    }
 
 
     private void HandleFrogDeath()
@@ -46,8 +74,28 @@ public class GameShootFrogs : MonoBehaviour
 
 
 
+    private void isAnyPlaces(){
+        if(places != null){
+            selectPlace(CoordsPositions[randomPlace()]);
+        }
+    }
+
+    private int randomPlace(){
+        int placeNumber = Random.Range(0, places.Count);
+        return placeNumber;
+    }
+
+    private void selectPlace(PlacePosition place){
+        coord1 = place.coord1;
+        coord2 = place.coord2;
+    }
+
+
     public void generateFrog()
     {
+        extractCoordsFromPlaces();
+        isAnyPlaces();
+
         aliveFrogs = numberOfFrog;
 
         for (int i = 0; i < numberOfFrog; i++)
@@ -101,7 +149,7 @@ public class GameShootFrogs : MonoBehaviour
         var resultX = min_max(coord1.position.x, coord2.position.x);
         var resultY = min_max(coord1.position.y, coord2.position.y);
         var resultZ = min_max(coord1.position.z, coord2.position.z);
-        return new Vector3(Random.Range(resultX.min, resultX.max), Random.Range(resultY.min, resultY.max), Random.Range(resultZ.min, resultX.max));
+        return new Vector3(Random.Range(resultX.min, resultX.max), Random.Range(resultY.min, resultY.max), Random.Range(resultZ.min, resultZ.max));
     }
 
     private float randRotation()
@@ -115,4 +163,19 @@ public class GameShootFrogs : MonoBehaviour
         return frogColors[position];
     }
 
+}
+
+
+
+
+[System.Serializable] 
+public class PlacePosition 
+{ 
+    public Transform coord1; 
+    public Transform coord2; 
+
+    public PlacePosition(Transform cor1, Transform cor2){
+        coord1 = cor1;
+        coord2 = cor2;
+    }
 }

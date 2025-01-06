@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShowScenarioPanel : MonoBehaviour
 {
-    public List<GameObject> episodes;
+    public List<LevelDescription> levelsDetails;
     public List<GameObject> triggerActivate;
     void Start()
     {
@@ -17,4 +17,12 @@ public class ShowScenarioPanel : MonoBehaviour
     {
         
     }
+}
+
+
+[System.Serializable] 
+public class LevelDescription 
+{ 
+    public int quantityOfFrogsFrom; 
+    public int quantityOfFrogsTo; 
 }

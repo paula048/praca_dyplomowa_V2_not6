@@ -8,6 +8,9 @@ public class TestCollision : MonoBehaviour
     public int rows = 3; public int columns = 3; 
     public float spacing = 1.5f; // Adjust the spacing as needed 
     public Vector3 initialPosition;
+
+    public Transform coord1;
+    public Transform coord2;
     void Start() 
     { 
         SpawnFrogGrid(); 
