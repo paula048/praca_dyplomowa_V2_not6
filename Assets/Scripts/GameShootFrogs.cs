@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameShootFrogs : MonoBehaviour
 {
+    public GameObject SCENARIO;
+    public GameObject VIEW_PANEL;
     public bool startTrigger = false;
     public GameObject frogModel;
     public int numberOfFrog = 20;
@@ -68,8 +70,18 @@ public class GameShootFrogs : MonoBehaviour
         if (aliveFrogs <= 0)
         {
             Debug.Log("You kill all FROGS");
+            breakMission();
         }
     }
+
+    private void breakMission(){
+        SCENARIO.GetComponent<ShowScenarioPanel>().incrementLevel();
+    }
+
+
+
+
+    
 
 
 

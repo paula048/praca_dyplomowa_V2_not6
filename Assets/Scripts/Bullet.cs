@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
             if (frogScript != null)
             {
                 frogScript.Death();
-                Destroy(gameObject);
+                // Destroy(gameObject);         remove for test
 
             }
             else
