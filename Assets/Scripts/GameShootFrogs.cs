@@ -12,8 +12,10 @@ public class GameShootFrogs : MonoBehaviour
     public List<Material> frogColors;
     public List<GameObject> places;
     public List<PlacePosition> CoordsPositions;
+
     private Transform coord1;
     private Transform coord2;
+    private List<GameObject> createdFrogs = new List<GameObject>();
 
 
     private int aliveFrogs;
@@ -24,6 +26,7 @@ public class GameShootFrogs : MonoBehaviour
         {
             generateFrog();
         }
+  
 
         if(coord1 != null){
             Debug.Log("TEST COORDS: " + coord1.position.x);
@@ -70,7 +73,16 @@ public class GameShootFrogs : MonoBehaviour
         if (aliveFrogs <= 0)
         {
             Debug.Log("You kill all FROGS");
+            clearFrogs();
             breakMission();
+        }
+    }
+
+
+    private void clearFrogs()
+    {
+        foreach(GameObject frog in createdFrogs){
+            Destroy(frog);
         }
     }
 
@@ -113,6 +125,7 @@ public class GameShootFrogs : MonoBehaviour
         for (int i = 0; i < numberOfFrog; i++)
         {
             GameObject thisFrog = Instantiate(frogModel, randPosition(), Quaternion.Euler(0f, randRotation(), 0f));
+            createdFrogs.Add(thisFrog);     // add frog to list
             Frog frogScript = thisFrog.GetComponent<Frog>();
             if (frogScript != null)
             {

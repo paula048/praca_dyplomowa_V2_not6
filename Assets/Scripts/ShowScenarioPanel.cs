@@ -7,8 +7,8 @@ public class ShowScenarioPanel : MonoBehaviour
 {
     public GameObject GENERATOR;
     public GameObject VIEW_PANEL;
+    public GameObject TROPHIES;
     public List<LevelDescription> levelsDetails;
-    public List<GameObject> triggerActivate;
     public List<GameObject> randomPlaces;
     public int numberOfLevels = 3;
     public int currentLevel = 0;
@@ -25,6 +25,7 @@ public class ShowScenarioPanel : MonoBehaviour
 
     public void incrementLevel(){
         if(currentLevel+1<numberOfLevels){  // istnieje nastepny Level
+            TROPHIES.GetComponent<FrogsTrophy>().showTrophy(currentLevel);                     // unlock Trophies
             currentLevel++;
             updatePanelText();
             Debug.Log("UPDATE Level to: "+ currentLevel);

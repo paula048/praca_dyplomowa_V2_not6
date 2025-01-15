@@ -12,7 +12,7 @@ public class LoadingScene : MonoBehaviour
     }
 
     public void scene_goStart(){
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Terrain1");
     }
 
     // Update is called once per frame
