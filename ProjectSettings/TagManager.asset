@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Guts
   - Frog
+  - Hand
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Terrain1.unity
     guid: 6c77a3a9fac37484ea47c0713640ea5b
+  - enabled: 1
+    path: Assets/Scenes/FrogsWord.unity
+    guid: d7f66d726e33f2c43bf5be80a84b1827
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: ed38f35baf66a5d47a7f9966e1177939, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: ef489d087fa397749a5b876d9f13be5e, type: 2}

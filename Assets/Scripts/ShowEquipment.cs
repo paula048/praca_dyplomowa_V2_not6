@@ -12,7 +12,7 @@ public class ShowEquipment : MonoBehaviour
     public InputActionReference addToButton; 
     public InputActionReference scrollButton; 
     public GameObject bagPanel;
-    public Transform pointToGenerate;
+    public GameObject pointToGenerate;
     public List<GameObject> objectsList;
     
     private bool isOpenBag = false;
@@ -123,7 +123,7 @@ public class ShowEquipment : MonoBehaviour
     private void ShowItem(int index){
         if(index < objectsList.Count){
             // objectsList[index].transform.position = new Vector3(122f, 51f, 453f);
-            objectsList[index].transform.position = new Vector3(pointToGenerate.position.x, pointToGenerate.position.y, pointToGenerate.position.z);
+            objectsList[index].transform.position = new Vector3(pointToGenerate.transform.position.x, pointToGenerate.transform.position.y, pointToGenerate.transform.position.z);
 
             objectsList[index].SetActive(true);
         }
@@ -142,10 +142,22 @@ public class ShowEquipment : MonoBehaviour
             ShowItem(currentIndex);
         }
     }
+
     private void CloseBag(){
         bagPanel.SetActive(false);
         isOpenBag = false;
-        HiddenItem(currentIndex);
+
+        // is item was taken from Equipment
+        bool request = pointToGenerate.GetComponent<DetectCollectItem>().isItemTaken(objectsList[currentIndex]);
+        if(request){
+            objectsList.RemoveAt(currentIndex);
+            Debug.Log("Request: true");
+        }
+        else{
+            HiddenItem(currentIndex);
+            Debug.Log("Request: flase");
+        }
+        
     }
 
     void Start()
