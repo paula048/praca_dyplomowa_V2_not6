@@ -12,10 +12,15 @@ public class ShowScenarioPanel : MonoBehaviour
     public List<GameObject> randomPlaces;
     public int numberOfLevels = 3;
     public int currentLevel = 0;
+    private string endGameText = "The frog plague is no more. You did what had to be done. But was it the right choice? Only time will tell...";
     void Start()
     {
         
     }
+
+        void Awake() {
+    DynamicGI.UpdateEnvironment();
+}
 
     // Update is called once per frame
     void Update()
@@ -32,6 +37,11 @@ public class ShowScenarioPanel : MonoBehaviour
         }
         else{
             Debug.Log("END Game !!!!!!!!!!");
+            TROPHIES.GetComponent<FrogsTrophy>().showTrophy(currentLevel);
+            VIEW_PANEL.GetComponent<MissionPanel>().setStatus(3);
+            VIEW_PANEL.GetComponent<MissionPanel>().setTitle("Congratulations!");
+            VIEW_PANEL.GetComponent<MissionPanel>().SetBackgroundColor(Color.red);
+            VIEW_PANEL.GetComponent<MissionPanel>().setDescription(endGameText);
         }
     }
 

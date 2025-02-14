@@ -6,6 +6,9 @@ public class GameShootFrogs : MonoBehaviour
 {
     public GameObject SCENARIO;
     public GameObject VIEW_PANEL;
+    public GameObject teleportationPanel;
+    public GameObject location;
+    
     public bool startTrigger = false;
     public GameObject frogModel;
     public int numberOfFrog = 20;
@@ -30,14 +33,38 @@ public class GameShootFrogs : MonoBehaviour
 
         if(coord1 != null){
             Debug.Log("TEST COORDS: " + coord1.position.x);
-        }
-
-        
+        }  
     }
 
     void Update()
     {
         
+    }
+
+
+    private void ErrorWithFrogPosition(){   // if Frog will be under Terrain -> Delete Frog
+        for(int i=0; i<createdFrogs.Count; i++){
+            if(createdFrogs[i].transform.position.y <= 4){
+                Debug.Log("Error detect: Frog position outside the Terrain. Update: Frog deleted.");
+                createdFrogs.RemoveAt(i);
+                numberOfFrog--;
+            }
+        }
+    }
+
+
+
+    IEnumerator FrogPosition()
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine with Error of Frog Position : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(10);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine with Error of Frog Position : " + Time.time);
+        ErrorWithFrogPosition();
     }
 
 
@@ -73,6 +100,8 @@ public class GameShootFrogs : MonoBehaviour
         if (aliveFrogs <= 0)
         {
             Debug.Log("You kill all FROGS");
+            location.GetComponent<Location>().hidden();
+            teleportationPanel.GetComponent<TeleportationPanel>().showPanel("Congratulation. Mission complete!");
             clearFrogs();
             breakMission();
         }
@@ -122,6 +151,9 @@ public class GameShootFrogs : MonoBehaviour
 
         aliveFrogs = numberOfFrog;
 
+        // show Localization Stripe
+        location.GetComponent<Location>().setAtPosition(randPosition());
+
         for (int i = 0; i < numberOfFrog; i++)
         {
             GameObject thisFrog = Instantiate(frogModel, randPosition(), Quaternion.Euler(0f, randRotation(), 0f));
@@ -149,6 +181,9 @@ public class GameShootFrogs : MonoBehaviour
                 Debug.LogError("Frog script not found on the instantiated 'Frog' object.");
             }
         }
+
+        // check correctnes od Frogs Position
+        StartCoroutine(FrogPosition());
     }
 
 

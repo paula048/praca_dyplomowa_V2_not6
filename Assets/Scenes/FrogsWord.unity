@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    buildHeightMesh: 0
+    buildHeightMesh: 1
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -272,75 +272,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &149141954
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 219.13017
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 26.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 181.07303
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421024405945212978, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8460486056883772046, guid: 652bee182feff644a81d57068df8554f, type: 3}
-      propertyPath: m_Name
-      value: Princess Frog
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 652bee182feff644a81d57068df8554f, type: 3}
 --- !u!1 &250617832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1231,6 +1162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SCENARIO: {fileID: 0}
   VIEW_PANEL: {fileID: 0}
+  teleportationPanel: {fileID: 0}
   startTrigger: 1
   frogModel: {fileID: 8460486056883772046, guid: 40c5dc2f86fac1442b9cf7a8c49a5631, type: 3}
   numberOfFrog: 200
@@ -5084,4 +5016,3 @@ SceneRoots:
   - {fileID: 835420905}
   - {fileID: 543792654}
   - {fileID: 1304016633}
-  - {fileID: 149141954}

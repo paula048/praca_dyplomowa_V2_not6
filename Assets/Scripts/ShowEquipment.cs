@@ -13,8 +13,12 @@ public class ShowEquipment : MonoBehaviour
     public InputActionReference scrollButton; 
     public GameObject bagPanel;
     public GameObject pointToGenerate;
+    public bool showInfo = false;
+    public GameObject InfoCanvas;
+
     public List<GameObject> objectsList;
     
+    private InfoPanel infoPanel;        // metod from script InfoPanel
     private bool isOpenBag = false;
     private int currentIndex = 0;
 
@@ -81,7 +85,9 @@ public class ShowEquipment : MonoBehaviour
         Debug.Log("Clicked Button To Add Item To List");
         if(actualGrabbedItem != null){
             Debug.Log("IS Actual Grabbed");
-            // add Item to Equipment
+            if(showInfo){
+                InfoCanvas.GetComponent<InfoPanel>().showInformation("Item added to Equipment");
+            }
             AddItemToEquipment();
             
         }
@@ -107,6 +113,26 @@ public class ShowEquipment : MonoBehaviour
         }
         
     }
+
+
+    // private void showInformation(int time = 4){
+    //     if(InfoCanvas != null){
+    //         InfoCanvas
+    //     }
+    // }
+    // private void showInfo(){
+    //     if(InfoCanvas != null){
+    //         InfoCanvas
+    //     }
+    // }
+
+    // IEnumerator ExampleCoroutine(int time = 4)
+    // {
+
+    //     yield return new WaitForSeconds(time);
+
+    //     ClearCollisionList();
+    // }
 
 
     private void AddItemToEquipment(){
@@ -144,9 +170,9 @@ public class ShowEquipment : MonoBehaviour
     }
 
     private void CloseBag(){
-        bagPanel.SetActive(false);
+        
+bagPanel.SetActive(false);
         isOpenBag = false;
-
         // is item was taken from Equipment
         bool request = pointToGenerate.GetComponent<DetectCollectItem>().isItemTaken(objectsList[currentIndex]);
         if(request){
@@ -157,6 +183,8 @@ public class ShowEquipment : MonoBehaviour
             HiddenItem(currentIndex);
             Debug.Log("Request: flase");
         }
+
+        
         
     }
 

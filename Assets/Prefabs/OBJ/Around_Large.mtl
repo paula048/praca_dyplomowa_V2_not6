@@ -1,0 +1,23 @@
+newmtl aroud9:blinn3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Pinho_bump.jpg
+Ni 1.00
+Ks 0.50 0.50 0.50
+newmtl aroud9:blinn5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd ash.jpg
+Ni 1.00
+Ks 0.19 0.19 0.19
+Ns 18.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00

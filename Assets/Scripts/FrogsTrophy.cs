@@ -7,6 +7,7 @@ public class FrogsTrophy : MonoBehaviour
     public bool triggerGenerate = false;
     public List<GameObject> trophies;
     public List<Transform> positionsOfTrophies;
+    public List<Vector3> positionsOfTrophiesManuallySet;
     private int actualLevel = 0;
     
     void Start()
@@ -27,7 +28,7 @@ public class FrogsTrophy : MonoBehaviour
     public void showTrophy(int index){
         if(index<trophies.Count){
             Debug.Log("Show Troph");
-            GameObject troph = Instantiate(trophies[index], extractVector(index), Quaternion.identity);
+            GameObject troph = Instantiate(trophies[index], getVector(index), Quaternion.identity);
         }
         else{
             Debug.Log("index out of the trophies List's size");
@@ -36,8 +37,12 @@ public class FrogsTrophy : MonoBehaviour
 
     private Vector3 extractVector(int level){
 
-
         return new Vector3(positionsOfTrophies[level].position.x, positionsOfTrophies[level].position.y, positionsOfTrophies[actualLevel].position.z);
+    }
+
+    private Vector3 getVector(int level){
+
+        return positionsOfTrophiesManuallySet[level];
     }
 
 }

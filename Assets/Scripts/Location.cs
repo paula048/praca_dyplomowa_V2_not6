@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Location : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject _object;
+    public int staticY_position;
+
     void Start()
     {
         
@@ -14,5 +16,15 @@ public class Location : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setAtPosition(Vector3 vector){
+        _object.SetActive(true);
+        Vector3 newPosition = new Vector3(vector.x, staticY_position, vector.z); // Update Y component
+        _object.transform.position = newPosition;
+    }
+
+    public void hidden(){
+        _object.SetActive(false);
     }
 }

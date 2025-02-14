@@ -54,7 +54,6 @@ public class LifeSystem : MonoBehaviour
     {
         if (toDo2Script != null)
         {
-            Debug.Log("SEX is");
             toDo2Script.decreaseLevel();  // Call makeCoffe function from ToDo2 script
         }
     }

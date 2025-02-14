@@ -13,6 +13,14 @@ public class LoadingScene : MonoBehaviour
 
     public void scene_goStart(){
         SceneManager.LoadScene("Terrain1");
+        // SceneManager.LoadScene("Terrain1", LoadSceneMode.Single);
+
+    }
+
+
+
+    public void goToMenu(){
+        SceneManager.LoadScene("Menu");
     }
 
     // Update is called once per frame

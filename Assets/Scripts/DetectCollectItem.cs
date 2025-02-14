@@ -25,6 +25,7 @@ public class DetectCollectItem : MonoBehaviour
             return true;
         }
         else{
+            Debug.LogError("er name "+ itemInside.name);
             Debug.LogError("Problem with detection. Also another item is inside Equipment Space.");
             return false;
         }
