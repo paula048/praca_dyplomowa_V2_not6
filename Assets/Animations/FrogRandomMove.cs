@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FrogRandomMove : StateMachineBehaviour
 {
+    public List<string> RandomSates;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -13,20 +14,11 @@ public class FrogRandomMove : StateMachineBehaviour
         animator.SetInteger("RotationDegree", randomRotation);
 
         // Use Random.Range to get a random number between 0 and 2 (inclusive)
-        int choice = Random.Range(0, 3);
+        int choice = Random.Range(0, RandomSates.Count);
 
-        if (choice == 0)
-        {
-            animator.SetTrigger("Idle");
-        }
-        else if (choice == 1)
-        {
-            animator.SetTrigger("TurnLeft");
-        }
-        else
-        {
-            animator.SetTrigger("TurnRight");
-        }
+
+        animator.SetTrigger(RandomSates[choice]);
+
        
     }
 
